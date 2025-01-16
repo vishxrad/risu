@@ -7,6 +7,11 @@ service cloud.firestore {
       allow read, write: if true;
     }
     
+    // Allow write access to subscribers collection
+    match /subscribers/{document} {
+      allow write: if true;
+    }
+    
     // Keep other collections locked down
     match /{document=**} {
       allow read, write: if false;

@@ -290,7 +290,7 @@
             apiKey: "AIzaSyBVeg9PZou1JBGWP3jO69o7amG19r99aeI",
             authDomain: "risu-app-bruh.firebaseapp.com",
             projectId: "risu-app-bruh",
-            storageBucket: "risu-app-bruh.firebasestorage.app",
+            storageBucket: "risu-app-bruh.appspot.com",
             messagingSenderId: "848377173495",
             appId: "1:848377173495:web:cd0c47a98992f08b6c8af2"
         };
@@ -367,7 +367,7 @@
                 emailInput.style.borderColor = 'rgba(157, 78, 221, 0.2)';
             } catch (error) {
                 console.error("Error adding subscriber: ", error);
-                showToast('Something went wrong. Please try again.', true);
+                showToast(error.message || 'Something went wrong. Please try again.', true);
             } finally {
                 // Reset form state
                 submitBtn.classList.remove('loading');
