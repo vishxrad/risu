@@ -295,10 +295,11 @@
             appId: "1:848377173495:web:cd0c47a98992f08b6c8af2"
         };
 
-        // Initialize Firebase
+        // Initialize Firebase and Firestore
+        let db;
         try {
             const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);
+            db = getFirestore(app);
             console.log("Firebase initialized successfully");
         } catch (error) {
             console.error("Error initializing Firebase:", error);
