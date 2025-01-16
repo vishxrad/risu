@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISU - The Meme Utopia | Coming Soon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/png;base64,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');
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #9d4edd, #7b2cbf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #9d4edd, #7b2cbf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: #a0a0a0;
+            max-width: 600px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature {
+            background: rgba(157, 78, 221, 0.05);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(157, 78, 221, 0.1);
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(157, 78, 221, 0.08);
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #9d4edd, #7b2cbf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature p {
+            color: #a0a0a0;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            border-radius: 0.5rem;
+            background: rgba(157, 78, 221, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: rgba(157, 78, 221, 0.5);
+        }
+
+        .email-input::placeholder {
+            color: #a0a0a0;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: linear-gradient(45deg, #9d4edd, #7b2cbf);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn.loading {
+            position: relative;
+            color: transparent;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .submit-btn.loading::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(45deg, #9d4edd, #7b2cbf);
+            color: white;
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.error {
+            background: linear-gradient(45deg, #ff4b4b, #d63031);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .submit-btn {
+                width: 100%;
+            }
+
+            .toast {
+                left: 2rem;
+                right: 2rem;
+                text-align: center;
+            }
+        }
+    </style>
+    <!-- Add Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    </script>
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="container">
+        <nav>
+            <div class="logo">RISU</div>
+        </nav>
+        
+        <main class="hero">
+            <h1>The Meme Utopia<br>Coming Soon</h1>
+            <p class="subtitle">Join the revolution in meme creation, discovery, and monetization. Where creators, brands, and meme enthusiasts unite.</p>
+            
+            <form class="email-form" id="subscribeForm" aria-label="Subscribe Form">
+                <input type="email" class="email-input" placeholder="Enter your email for early access" required aria-label="Email Input">
+                <button type="submit" class="submit-btn" aria-label="Submit Button">Get Notified</button>
+            </form>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>For Creators</h3>
+                    <p>Advanced meme creation tools, AI-powered features, and direct connections to brands seeking your talent.</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>For Brands</h3>
+                    <p>Access top meme creators, streamlined hiring process, and effective meme marketing opportunities.</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>For Users</h3>
+                    <p>Curated meme content, categorized discovery, and a seamless, ad-light experience focused on entertainment.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast notification container -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVeg9PZou1JBGWP3jO69o7amG19r99aeI",
+            authDomain: "risu-app-bruh.firebaseapp.com",
+            projectId: "risu-app-bruh",
+            storageBucket: "risu-app-bruh.firebasestorage.app",
+            messagingSenderId: "848377173495",
+            appId: "1:848377173495:web:cd0c47a98992f08b6c8af2"
+        };
+
+        // Initialize Firebase
+        try {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            console.log("Firebase initialized successfully");
+        } catch (error) {
+            console.error("Error initializing Firebase:", error);
+            showToast('Unable to initialize the application. Please try again later.', true);
+        }
+
+        // Function to show toast notification
+        function showToast(message, isError = false) {
+            // Clear any existing timeout
+            if (window.toastTimeout) {
+                clearTimeout(window.toastTimeout);
+            }
+
+            // Set toast message and style
+            toast.textContent = message;
+            toast.className = `toast ${isError ? 'error' : ''}`;
+
+            // Force a reflow to restart animation
+            toast.offsetHeight;
+
+            // Show the toast
+            toast.classList.add('show');
+
+            // Hide toast after 3 seconds
+            window.toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Function to validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Handle form submission
+        const form = document.getElementById('subscribeForm');
+        const emailInput = form.querySelector('.email-input');
+        const submitBtn = form.querySelector('.submit-btn');
+        const toast = document.getElementById('toast');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+
+            if (!isValidEmail(email)) {
+                showToast('Please enter a valid email address', true);
+                emailInput.focus();
+                return;
+            }
+
+            // Show loading state
+            submitBtn.classList.add('loading');
+            emailInput.disabled = true;
+
+            try {
+                // Add email to Firebase
+                const docRef = await addDoc(collection(db, "subscribers"), {
+                    email: email,
+                    timestamp: new Date()
+                });
+                
+                showToast('Thank you for subscribing! We\'ll keep you updated.');
+                form.reset();
+                emailInput.style.borderColor = 'rgba(157, 78, 221, 0.2)';
+            } catch (error) {
+                console.error("Error adding subscriber: ", error);
+                showToast('Something went wrong. Please try again.', true);
+            } finally {
+                // Reset form state
+                submitBtn.classList.remove('loading');
+                emailInput.disabled = false;
+            }
+        });
+
+        // Add input validation feedback
+        emailInput.addEventListener('input', (e) => {
+            const email = e.target.value.trim();
+
+            if (email && !isValidEmail(email)) {
+                emailInput.style.borderColor = 'rgba(255, 75, 75, 0.5)';
+            } else {
+                emailInput.style.borderColor = 'rgba(157, 78, 221, 0.2)';
+            }
+        });
+    </script>
+</body>
+</html>
